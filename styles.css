@@ -1,0 +1,817 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.money-display {
+    font-size: 1.6em;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.money-value {
+    font-weight: 700;
+    color: #FFD700;
+    margin-left: 10px;
+    font-size: 1.1em;
+}
+
+.content {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.restaurant-section,
+.business-section,
+.upgrades-section {
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.restaurant-section {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.business-section {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.upgrades-section {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.restaurant-section h2,
+.business-section h2,
+.upgrades-section h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.restaurant-section h2 {
+    color: #5a67d8;
+}
+
+.business-section h2 {
+    color: #d63031;
+}
+
+.upgrades-section h2 {
+    color: #0984e3;
+}
+
+.restaurant-display {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.restaurant-visual {
+    flex: 1;
+    text-align: center;
+}
+
+.building {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 15px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+    border: 3px solid #5C4033;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.building::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 70%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+/* Restaurant tier styles */
+.tier-1 .building {
+    background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.tier-2 .building {
+    background: linear-gradient(135deg, #A0826D 0%, #c9a961 100%);
+}
+
+.tier-3 .building {
+    background: linear-gradient(135deg, #c9a961 0%, #d4af37 100%);
+}
+
+.tier-4 .building {
+    background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.tier-5 .building {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+}
+
+.sign {
+    background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 100%);
+    color: #FFD700;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: 700;
+    border: 3px solid #FFD700;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.sign:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+}
+
+.restaurant-info {
+    flex: 1;
+}
+
+.restaurant-info p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 0.95em;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.customer-area {
+    background: linear-gradient(135deg, #fffacd 0%, #fff9e6 100%);
+    border: 3px dashed #ff9500;
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 120px;
+    position: relative;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 10px rgba(255, 149, 0, 0.1);
+}
+
+.customer-count {
+    text-align: center;
+    font-weight: 700;
+    color: #d63031;
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+
+.customer {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    animation: walkIn 0.5s ease-out;
+    transition: all 0.2s ease;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.customer:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+}
+
+@keyframes walkIn {
+    from {
+        left: -50px;
+        opacity: 0;
+    }
+    to {
+        left: var(--left);
+        opacity: 1;
+    }
+}
+
+@keyframes walkOut {
+    to {
+        right: -50px;
+        opacity: 0;
+    }
+}
+
+.customer.leaving {
+    animation: walkOut 0.5s ease-out forwards;
+}
+
+.floating-money {
+    position: absolute;
+    font-weight: bold;
+    color: #4caf50;
+    font-size: 18px;
+    pointer-events: none;
+    animation: floatUp 0.8s ease-out forwards;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.stats {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    padding: 18px;
+    border-radius: 12px;
+    border: 2px solid #ffd54f;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+}
+
+.stats p {
+    margin: 10px 0;
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.upgrades-section {
+    grid-column: 1 / -1;
+}
+
+.upgrades-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.upgrade-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.upgrade-card:hover:not(.purchased):not(.locked) {
+    border-color: #764ba2;
+    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.25);
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8dcff 100%);
+}
+
+.upgrade-card.purchased {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border-color: #4caf50;
+    opacity: 0.85;
+}
+
+.upgrade-card.locked {
+    background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: #bdbdbd;
+}
+
+.upgrade-card.locked::after {
+    content: '🔒 Locked';
+    display: block;
+    color: #999;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.upgrade-title {
+    font-weight: 700;
+    color: #5a67d8;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.upgrade-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.upgrade-cost {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.upgrade-card.purchased .upgrade-cost {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+}
+
+.upgrade-benefit {
+    font-size: 0.85em;
+    color: #2c3e50;
+    padding: 10px;
+    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 11px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    font-size: 0.95em;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+}
+
+.buy-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #764ba2 0%, #5a3d8a 100%);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(102, 126, 234, 0.35);
+}
+
+.buy-button:disabled {
+    background: linear-gradient(135deg, #ccc 0%, #aaa 100%);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.buy-button.purchased {
+    background: #4caf50;
+    cursor: default;
+}
+
+.buy-button.purchased:hover {
+    background: #4caf50;
+    transform: none;
+}
+
+.cooking-button {
+    width: 100%;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #ff8787 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.35);
+    letter-spacing: 0.5px;
+}
+
+.cooking-button:hover:not(:disabled) {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.45);
+}
+
+.cooking-button:active:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.cooking-button.on-cooldown {
+    background: linear-gradient(135deg, #bbb 0%, #999 100%);
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: 0 4px 10px rgba(100, 100, 100, 0.2);
+}
+
+.cooking-button.on-cooldown:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.typing-button {
+    width: 100%;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #9c88ff 0%, #6c5ce7 50%, #a29bfe 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(156, 136, 255, 0.35);
+    letter-spacing: 0.5px;
+}
+
+.typing-button:hover:not(:disabled) {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(156, 136, 255, 0.45);
+}
+
+.typing-button:active:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.typing-button.on-cooldown {
+    background: linear-gradient(135deg, #bbb 0%, #999 100%);
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: 0 4px 10px rgba(100, 100, 100, 0.2);
+}
+
+.typing-button.on-cooldown:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(100, 100, 100, 0.2);
+}
+
+.minigame-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.minigame-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 3px solid #667eea;
+}
+
+.minigame-header {
+    margin-bottom: 30px;
+}
+
+.minigame-header h2 {
+    color: #764ba2;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.minigame-header p {
+    color: #555;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.word-display {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #764ba2;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 15px;
+    border: 3px solid #ff9500;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+#typingInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#typingInput:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 15px rgba(118, 75, 162, 0.3);
+    transform: scale(1.02);
+}
+
+.minigame-game {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cooking-pan {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #ff9500 0%, #ff6b6b 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    user-select: none;
+    transition: all 0.1s ease;
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
+}
+
+.cooking-pan:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.45);
+}
+
+.cooking-pan:active {
+    transform: scale(0.9);
+}
+
+.minigame-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-radius: 12px;
+    font-weight: 700;
+    border: 2px solid #667eea;
+}
+
+.minigame-stats p {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #333;
+}
+
+.minigame-stats span {
+    color: #764ba2;
+    font-weight: 700;
+}
+
+.close-minigame {
+    padding: 14px 35px;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.close-minigame:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.45);
+}
+
+.secret-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(102, 126, 234, 0.3);
+    color: rgba(102, 126, 234, 0.7);
+    border: 2px solid rgba(102, 126, 234, 0.4);
+    border-radius: 50%;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.secret-button:hover {
+    background: rgba(102, 126, 234, 0.5);
+    color: rgba(102, 126, 234, 0.9);
+    border-color: rgba(102, 126, 234, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.secret-modal-content {
+    max-width: 400px;
+    text-align: center;
+}
+
+.secret-input-container {
+    margin-top: 20px;
+}
+
+#secretCodeInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+    border: 3px solid #667eea;
+    border-radius: 10px;
+    background: white;
+    color: #333;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    outline: none;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+#secretCodeInput:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 15px rgba(118, 75, 162, 0.3);
+    transform: scale(1.02);
+}
+
+.secret-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.secret-submit-btn, .secret-cancel-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secret-submit-btn {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+}
+
+.secret-submit-btn:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+    transform: scale(1.05);
+}
+
+.secret-cancel-btn {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    color: white;
+}
+
+.secret-cancel-btn:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+    transform: scale(1.05);
+}
+
+.secret-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.continue-btn {
+    margin-top: 25px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #5a3a7d 100%);
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.continue-btn:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .upgrades-list {
+        grid-template-columns: 1fr;
+    }
+}

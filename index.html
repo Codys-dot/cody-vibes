@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Tycoon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Restaurant Tycoon</h1>
+            <div class="money-display">
+                <span class="label">Balance:</span>
+                <span class="money-value" id="money">$0</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="restaurant-section">
+                <h2>Your Restaurant</h2>
+                <div class="restaurant-display" id="restaurant">
+                    <div class="restaurant-visual">
+                        <div class="building"></div>
+                        <div class="sign" id="restaurantName">Dusty Diner</div>
+                    </div>
+                    <div class="restaurant-info">
+                        <p id="currentTier">Tier: 1 - Dusty Diner</p>
+                        <p id="progress">Progress: 0/20 Upgrades</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="business-section">
+                <h2>Business Operations</h2>
+                <button id="cookingButton" class="cooking-button" onclick="startCookingMinigame()">🍳 Start Cooking</button>
+                <button id="typingButton" class="typing-button" onclick="startTypingMinigame()">⌨️ Speed Typing</button>
+                <div class="customer-area" id="customerArea">
+                    <p class="customer-count" id="customerCount">Customers: 0</p>
+                </div>
+                <div class="stats">
+                    <p>Money per Customer: <span id="moneyPerCustomer">$50</span></p>
+                    <p>Customer Visit Rate: <span id="customerRate">1 per 3s</span></p>
+                </div>
+            </div>
+
+            <div class="upgrades-section">
+                <h2>Available Upgrades</h2>
+                <div class="upgrades-list" id="upgradesList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cooking Minigame Modal -->
+    <div class="minigame-modal" id="minigameModal" style="display: none;">
+        <div class="minigame-content">
+            <div class="minigame-header">
+                <h2>🍳 Cooking Minigame</h2>
+                <p>Click the pans as fast as you can!</p>
+            </div>
+            <div class="minigame-game" id="minigameArea"></div>
+            <div class="minigame-stats">
+                <p>Score: <span id="minigameScore">0</span></p>
+                <p>Time: <span id="minigameTime">10</span>s</p>
+            </div>
+            <button class="close-minigame" onclick="closeCookingMinigame()" id="closeMinigameBtn" style="display: none;">Continue</button>
+        </div>
+    </div>
+
+    <!-- Typing Minigame Modal -->
+    <div class="minigame-modal" id="typingModal" style="display: none;">
+        <div class="minigame-content">
+            <div class="minigame-header">
+                <h2>⌨️ Speed Typing Challenge</h2>
+                <p>Type the words as fast as you can! One wrong letter ends the game.</p>
+            </div>
+            <div class="minigame-game" id="typingArea">
+                <div class="word-display" id="wordDisplay">restaurant</div>
+                <input type="text" id="typingInput" placeholder="Type here..." autocomplete="off">
+            </div>
+            <div class="minigame-stats">
+                <p>Words: <span id="typingScore">0</span></p>
+                <p>Time: <span id="typingTime">60</span>s</p>
+            </div>
+            <button class="close-minigame" onclick="closeTypingMinigame()" id="closeTypingBtn" style="display: none;">Continue</button>
+        </div>
+    </div>
+
+    <!-- Secret Button -->
+    <button id="secretButton" class="secret-button" onclick="openSecretCode()" title="???">?</button>
+
+    <!-- Secret Code Modal -->
+    <div class="minigame-modal" id="secretModal" style="display: none;">
+        <div class="minigame-content secret-modal-content">
+            <div class="minigame-header">
+                <h2>🔐 Secret Code</h2>
+                <p>Enter the secret code to unlock a special reward!</p>
+            </div>
+            <div class="secret-input-container">
+                <input type="password" id="secretCodeInput" placeholder="Enter code..." maxlength="10" autocomplete="off">
+                <div class="secret-buttons">
+                    <button class="secret-submit-btn" onclick="submitSecretCode()">Submit</button>
+                    <button class="secret-cancel-btn" onclick="closeSecretModal()">Cancel</button>
+                </div>
+            </div>
+            <div id="secretMessage" class="secret-message"></div>
+            <button id="continueBtn" class="continue-btn" onclick="closeSecretModal()" style="display: none;">Keep Playing 🎮</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
