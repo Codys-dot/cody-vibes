@@ -13,24 +13,13 @@ const gameState = {
     minigameCooldownEnd: 0 // Timestamp when cooldown expires
 };
 
-// Secret code
-const SECRET_CODE = "4532";
-let secretCodeHints = [
-    "The numbers seem important... 4, 5, 3, 2...",
-    "I wonder what that mysterious button does?",
-    "Some codes are just numbers in sequence...",
-    "Have you tried clicking that subtle button in the corner?",
-    "The secret might be hiding in plain sight...",
-    "4...5...3...2... what could it mean?"
-];
-
 // Define all 20 upgrades
 const upgrades = [
     {
         id: 1,
         name: "Better Lights",
         description: "Install proper LED lighting",
-        cost: 250,
+        cost: 750,
         benefit: "Increase money per customer by $10",
         moneyBoost: 10,
         tier: 1
@@ -39,7 +28,7 @@ const upgrades = [
         id: 2,
         name: "Fresh Paint",
         description: "Paint the walls a brighter color",
-        cost: 350,
+        cost: 1050,
         benefit: "Increase customer visit rate by 10%",
         rateBoost: 0.9,
         tier: 1
@@ -48,7 +37,7 @@ const upgrades = [
         id: 3,
         name: "New Chairs",
         description: "Replace old furniture",
-        cost: 500,
+        cost: 1500,
         benefit: "Increase money per customer by $15",
         moneyBoost: 15,
         tier: 1
@@ -56,8 +45,8 @@ const upgrades = [
     {
         id: 4,
         name: "Cleaner Floors",
-        description: "Deep clean and polish. (Hint: Some secrets start with 4...)",
-        cost: 750,
+        description: "Deep clean and polish.",
+        cost: 2250,
         benefit: "Increase money per customer by $20",
         moneyBoost: 20,
         tier: 2
@@ -65,8 +54,8 @@ const upgrades = [
     {
         id: 5,
         name: "Quality Menu",
-        description: "Print professional menus. (The number 5 might be key...)",
-        cost: 1000,
+        description: "Print professional menus.",
+        cost: 3000,
         benefit: "Increase customer visit rate by 15%",
         rateBoost: 0.85,
         tier: 2
@@ -74,8 +63,8 @@ const upgrades = [
     {
         id: 6,
         name: "Music System",
-        description: "Install background music. (3 might be the magic number...)",
-        cost: 1250,
+        description: "Install background music.",
+        cost: 3750,
         benefit: "Increase money per customer by $25",
         moneyBoost: 25,
         tier: 2
@@ -83,8 +72,8 @@ const upgrades = [
     {
         id: 7,
         name: "Better Lighting",
-        description: "Upgrade to ambient lighting. (And 2 completes the sequence!)",
-        cost: 1500,
+        description: "Upgrade to ambient lighting.",
+        cost: 4500,
         benefit: "Increase customer visit rate by 20%",
         rateBoost: 0.80,
         tier: 2
@@ -93,7 +82,7 @@ const upgrades = [
         id: 8,
         name: "Kitchen Upgrade",
         description: "Modernize the kitchen",
-        cost: 2500,
+        cost: 7500,
         benefit: "Increase money per customer by $35",
         moneyBoost: 35,
         tier: 3
@@ -102,7 +91,7 @@ const upgrades = [
         id: 9,
         name: "Elegant Decor",
         description: "Add artistic decorations",
-        cost: 3000,
+        cost: 9000,
         benefit: "Increase money per customer by $40",
         moneyBoost: 40,
         tier: 3
@@ -111,7 +100,7 @@ const upgrades = [
         id: 10,
         name: "Premium Tableware",
         description: "Upgrade to fine china",
-        cost: 3500,
+        cost: 10500,
         benefit: "Increase customer visit rate by 25%",
         rateBoost: 0.75,
         tier: 3
@@ -120,7 +109,7 @@ const upgrades = [
         id: 11,
         name: "Marble Counters",
         description: "Install elegant marble",
-        cost: 5000,
+        cost: 15000,
         benefit: "Increase money per customer by $50",
         moneyBoost: 50,
         tier: 3
@@ -129,7 +118,7 @@ const upgrades = [
         id: 12,
         name: "Crystal Chandeliers",
         description: "Add luxurious chandeliers",
-        cost: 7500,
+        cost: 22500,
         benefit: "Increase customer visit rate by 30%",
         rateBoost: 0.70,
         tier: 4
@@ -138,7 +127,7 @@ const upgrades = [
         id: 13,
         name: "Chef's Table",
         description: "Create exclusive chef's table",
-        cost: 10000,
+        cost: 30000,
         benefit: "Increase money per customer by $60",
         moneyBoost: 60,
         tier: 4
@@ -147,7 +136,7 @@ const upgrades = [
         id: 14,
         name: "Fine Wine Selection",
         description: "Curate premium wine collection",
-        cost: 12500,
+        cost: 37500,
         benefit: "Increase money per customer by $75",
         moneyBoost: 75,
         tier: 4
@@ -156,7 +145,7 @@ const upgrades = [
         id: 15,
         name: "Gold Leaf Accents",
         description: "Add gold plating details",
-        cost: 15000,
+        cost: 45000,
         benefit: "Increase customer visit rate by 35%",
         rateBoost: 0.65,
         tier: 4
@@ -165,7 +154,7 @@ const upgrades = [
         id: 16,
         name: "Michelin Chef",
         description: "Hire a world-class chef",
-        cost: 20000,
+        cost: 60000,
         benefit: "Increase money per customer by $100",
         moneyBoost: 100,
         tier: 5
@@ -174,7 +163,7 @@ const upgrades = [
         id: 17,
         name: "Platinum Fixtures",
         description: "Install platinum bathroom fixtures",
-        cost: 25000,
+        cost: 75000,
         benefit: "Increase money per customer by $125",
         moneyBoost: 125,
         tier: 5
@@ -183,7 +172,7 @@ const upgrades = [
         id: 18,
         name: "Private Courtyard",
         description: "Build outdoor dining area",
-        cost: 35000,
+        cost: 105000,
         benefit: "Increase customer visit rate by 40%",
         rateBoost: 0.60,
         tier: 5
@@ -192,7 +181,7 @@ const upgrades = [
         id: 19,
         name: "Gold Restaurant",
         description: "Cover everything in gold",
-        cost: 50000,
+        cost: 150000,
         benefit: "Increase money per customer by $200",
         moneyBoost: 200,
         tier: 5
@@ -200,8 +189,8 @@ const upgrades = [
     {
         id: 20,
         name: "Legend Status",
-        description: "Become a legendary restaurant. (The secret code is 4532 - try the mystery button!)",
-        cost: 100000,
+        description: "Become a legendary restaurant.",
+        cost: 300000,
         benefit: "Increase customer visit rate by 50%",
         rateBoost: 0.50,
         tier: 5
@@ -341,13 +330,15 @@ function purchaseUpgrade(upgradeId) {
         startCustomerSpawning();
     }
 
-    // Show hints at certain milestones
+    // Show hints at certain milestones 
     if (upgrade.id === 4) {
-        setTimeout(() => alert("💡 Hint: You notice a mysterious button in the bottom right corner..."), 1000);
+        setTimeout(() => alert("💡 Clue unlocked: first code digit is 4."), 1000);
     } else if (upgrade.id === 10) {
-        setTimeout(() => alert("💡 Hint: Some secrets require special codes..."), 1000);
+        setTimeout(() => alert("💡 Clue unlocked: second code digit is 5."), 1000);
     } else if (upgrade.id === 15) {
-        setTimeout(() => alert("💡 Hint: The code might be numbers: 4, 5, 3, 2..."), 1000);
+        setTimeout(() => alert("💡 Clue unlocked: third digit is tied to the third tier.") , 1000);
+    } else if (upgrade.id === 19) {
+        setTimeout(() => alert("💡 Clue unlocked: final digit is one less than the number of fingers on one hand."), 1000);
     }
 
     // Update display
@@ -363,9 +354,6 @@ function startCustomerSpawning() {
 }
 
 function spawnCustomer() {
-    // Show random hint occasionally
-    showRandomHint();
-    
     const customerArea = document.getElementById('customerArea');
     const customer = document.createElement('div');
     customer.className = 'customer';
@@ -579,16 +567,17 @@ function closeCookingMinigame() {
 
 // Typing Minigame Functions
 const typingWords = [
-    'restaurant', 'customer', 'kitchen', 'cooking', 'delicious', 'service', 'manager', 'business', 'upgrade', 'profit',
-    'menu', 'recipe', 'chef', 'dining', 'table', 'order', 'server', 'food', 'drink', 'special',
-    'lunch', 'dinner', 'breakfast', 'appetizer', 'dessert', 'beverage', 'reservation', 'atmosphere', 'ambiance', 'experience',
-    'quality', 'fresh', 'ingredients', 'presentation', 'portion', 'value', 'satisfaction', 'review', 'rating', 'recommendation'
+    'gastronomy', 'connoisseur', 'culinary', 'artisanal', 'sophisticated', 'sustainability', 'farm-to-table', 'delectable', 'mouthwatering', 'meticulous',
+    'hospitality', 'presentation', 'ambiance', 'ambidextrous', 'palate', 'marinade', 'fermentation', 'zestful', 'umami', 'decadent',
+    'gastronomic', 'roasted', 'caramelization', 'sauteing', 'bouillabaisse', 'mise-en-place', 'hierarchy', 'accompaniment', 'epicurean', 'bouquet',
+    'umami', 'patisserie', 'flambé', 'velvety', 'truffle', 'infusion', 'charcuterie', 'nougat', 'tenderloin', 'champagne'
 ];
 
 let currentTypingWord = '';
 let typingScore = 0;
 let typingTimeLeft = 60;
 let typingTimer = null;
+let typingInTransition = false;
 
 function startTypingMinigame() {
     if (gameState.minigameActive) return;
@@ -615,14 +604,15 @@ function startTypingMinigame() {
     input.focus();
     
     typingScore = 0;
-    typingTimeLeft = 60;
+    typingTimeLeft = 30;
+    typingInTransition = false; // Reset transition flag
     scoreDisplay.textContent = '0';
     timeDisplay.textContent = typingTimeLeft;
     
     // Start with first word
     nextTypingWord();
     
-    // Start timer
+    // Start timer (30-second round)
     typingTimer = setInterval(() => {
         typingTimeLeft--;
         timeDisplay.textContent = typingTimeLeft;
@@ -643,6 +633,8 @@ function nextTypingWord() {
 }
 
 function handleTypingInput(e) {
+    if (typingInTransition) return; // Skip processing during word transition
+    
     const input = e.target;
     const typedText = input.value.toLowerCase();
     const targetWord = currentTypingWord.toLowerCase();
@@ -662,14 +654,19 @@ function handleTypingInput(e) {
     if (typedText === targetWord) {
         typingScore++;
         document.getElementById('typingScore').textContent = typingScore;
+        typingInTransition = true; // Prevent listener from firing during clear
         input.value = '';
         input.style.borderColor = '#667eea';
         nextTypingWord();
+        setTimeout(() => {
+            typingInTransition = false; // Re-enable after transition
+        }, 10);
     }
 }
 
 function endTypingMinigame() {
     gameState.minigameActive = false;
+    typingInTransition = false; // Reset transition flag
     // Set cooldown for 45 seconds
     gameState.minigameCooldownEnd = Date.now() + (45 * 1000);
     
@@ -732,114 +729,5 @@ function closeTypingMinigame() {
     modal.style.display = 'none';
 }
 
-// Secret Code Functions
-function openSecretCode() {
-    const modal = document.getElementById('secretModal');
-    const input = document.getElementById('secretCodeInput');
-    const messageDiv = document.getElementById('secretMessage');
-    const inputContainer = document.querySelector('.secret-input-container');
-    const continueBtn = document.getElementById('continueBtn');
-    
-    modal.style.display = 'flex';
-    input.value = '';
-    messageDiv.textContent = '';
-    inputContainer.style.display = 'block';
-    continueBtn.style.display = 'none';
-    input.focus();
-    
-    // Add Enter key support
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            submitSecretCode();
-        }
-    };
-    
-    input.addEventListener('keypress', handleKeyPress);
-    
-    // Store the handler to remove it later
-    input._keyHandler = handleKeyPress;
-}
-
-function submitSecretCode() {
-    const input = document.getElementById('secretCodeInput');
-    const code = input.value.trim();
-    const messageDiv = document.getElementById('secretMessage');
-    const continueBtn = document.getElementById('continueBtn');
-    
-    if (code === SECRET_CODE) {
-        // Correct code - give reward
-        const reward = 2000000; // $2,000,000 bonus
-        gameState.money += reward;
-        updateDisplay();
-        renderUpgrades();
-        messageDiv.textContent = `🎉 SECRET CODE ACCEPTED! 🎉\n\nYou've unlocked a special bonus!\n+$${formatNumber(reward)} added to your balance!\n\nKeep playing to discover more secrets...`;
-        messageDiv.style.color = '#4caf50';
-        // Hide input and buttons on success
-        document.querySelector('.secret-input-container').style.display = 'none';
-        // Show continue button
-        continueBtn.style.display = 'block';
-    } else {
-        // Wrong code
-        input.style.borderColor = '#f44336';
-        input.style.boxShadow = '0 0 15px rgba(244, 67, 54, 0.3)';
-        setTimeout(() => {
-            input.style.borderColor = '#667eea';
-            input.style.boxShadow = 'none';
-        }, 1000);
-        messageDiv.textContent = "❌ Incorrect code. Keep exploring the game for hints!";
-        messageDiv.style.color = '#f44336';
-    }
-}
-
-function closeSecretModal() {
-    const modal = document.getElementById('secretModal');
-    const input = document.getElementById('secretCodeInput');
-    
-    // Remove the keypress event listener
-    if (input._keyHandler) {
-        input.removeEventListener('keypress', input._keyHandler);
-        delete input._keyHandler;
-    }
-    
-    modal.style.display = 'none';
-}
-
-// Scroll detection for secret button visibility
-function updateSecretButtonVisibility() {
-    const button = document.getElementById('secretButton');
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    
-    // Show button only when scrolled to bottom (within 100px of bottom)
-    const isAtBottom = scrollTop + windowHeight >= documentHeight - 100;
-    
-    if (isAtBottom) {
-        button.style.opacity = '1';
-        button.style.pointerEvents = 'auto';
-    } else {
-        button.style.opacity = '0';
-        button.style.pointerEvents = 'none';
-    }
-}
-
-// Add random hints throughout gameplay
-function showRandomHint() {
-    if (Math.random() < 0.15) { // 15% chance when spawning customers
-        const hint = secretCodeHints[Math.floor(Math.random() * secretCodeHints.length)];
-        // Could show as a temporary notification, but for now just console log
-        console.log("💡 Hint: " + hint);
-    }
-}
-
 // Start the game
 document.addEventListener('DOMContentLoaded', initGame);
-
-// Add scroll listener for secret button visibility
-window.addEventListener('scroll', updateSecretButtonVisibility);
-window.addEventListener('resize', updateSecretButtonVisibility);
-
-// Initialize secret button visibility
-document.addEventListener('DOMContentLoaded', () => {
-    updateSecretButtonVisibility();
-});

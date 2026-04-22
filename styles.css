@@ -5,49 +5,60 @@
 }
 
 body {
-    font-family: 'Fredoka', 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    min-height: 100vh;
-    padding: 20px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
-    border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-}
-
-.header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    color: white;
-    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    color: white;
 }
 
-.header h1 {
-    font-size: 2.8em;
-    font-weight: 700;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-    letter-spacing: 1px;
+.game-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.money-display {
-    font-size: 1.6em;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 15px 25px;
-    border-radius: 15px;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.money-value {
-    font-weight: 700;
+.score {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.player-score {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#pong-canvas {
+    border: 2px solid white;
+    background: #000;
+    display: block;
+    margin: 0 auto;
+}
+
+.controls {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.status {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #ffff00;
+}
     color: #FFD700;
     margin-left: 10px;
     font-size: 1.1em;
@@ -662,116 +673,6 @@ body {
     box-shadow: 0 8px 20px rgba(76, 175, 80, 0.45);
 }
 
-.secret-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(102, 126, 234, 0.3);
-    color: rgba(102, 126, 234, 0.7);
-    border: 2px solid rgba(102, 126, 234, 0.4);
-    border-radius: 50%;
-    font-size: 1.5em;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fredoka', 'Poppins', sans-serif;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.secret-button:hover {
-    background: rgba(102, 126, 234, 0.5);
-    color: rgba(102, 126, 234, 0.9);
-    border-color: rgba(102, 126, 234, 0.6);
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-}
-
-.secret-modal-content {
-    max-width: 400px;
-    text-align: center;
-}
-
-.secret-input-container {
-    margin-top: 20px;
-}
-
-#secretCodeInput {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.5em;
-    font-weight: 600;
-    text-align: center;
-    border: 3px solid #667eea;
-    border-radius: 10px;
-    background: white;
-    color: #333;
-    font-family: 'Fredoka', 'Poppins', sans-serif;
-    outline: none;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-#secretCodeInput:focus {
-    border-color: #764ba2;
-    box-shadow: 0 0 15px rgba(118, 75, 162, 0.3);
-    transform: scale(1.02);
-}
-
-.secret-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-
-.secret-submit-btn, .secret-cancel-btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    font-weight: 600;
-    font-family: 'Fredoka', 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.secret-submit-btn {
-    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
-    color: white;
-}
-
-.secret-submit-btn:hover {
-    background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
-    transform: scale(1.05);
-}
-
-.secret-cancel-btn {
-    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
-    color: white;
-}
-
-.secret-cancel-btn:hover {
-    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
-    transform: scale(1.05);
-}
-
-.secret-message {
-    margin-top: 20px;
-    font-size: 1.2em;
-    font-weight: 600;
-    min-height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .continue-btn {
     margin-top: 25px;
     padding: 15px 40px;
@@ -813,5 +714,458 @@ body {
 
     .upgrades-list {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Restaurant Tycoon Styles */
+body {
+    font-family: 'Poppins', 'Fredoka', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stats {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    padding: 18px;
+    border-radius: 12px;
+    border: 2px solid #ffd54f;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #000;
+}
+
+.stats .stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-weight: 600;
+    color: #000;
+    font-size: 0.9em;
+}
+
+.stat-value {
+    font-weight: 700;
+    color: #000;
+    font-size: 1em;
+}
+
+.progress-container {
+    flex: 1;
+    max-width: 300px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50 0%, #45a049 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+.main-content {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.restaurant-section {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.restaurant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.restaurant {
+    position: relative;
+}
+
+.building {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+    border: 3px solid #5C4033;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.roof {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(135deg, #8B0000 0%, #A52A2A 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.walls {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.door {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(135deg, #654321 0%, #8B4513 100%);
+    border-radius: 5px 5px 0 0;
+}
+
+.windows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    right: 15px;
+}
+
+.window {
+    width: 25px;
+    height: 25px;
+    background: rgba(135, 206, 235, 0.8);
+    border: 2px solid #5C4033;
+    border-radius: 3px;
+}
+
+.customer-area {
+    background: linear-gradient(135deg, #fffacd 0%, #fff9e6 100%);
+    border: 3px dashed #ff9500;
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 10px rgba(255, 149, 0, 0.1);
+    width: 100%;
+}
+
+.restaurant-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.restaurant-stats .stat {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.upgrades-section {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.upgrades-section h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.upgrades-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.upgrade-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+    border: 2px solid #667eea;
+    border-radius: 15px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+}
+
+.upgrade-card:hover:not(.purchased):not(.locked) {
+    border-color: #764ba2;
+    box-shadow: 0 10px 25px rgba(118, 75, 162, 0.25);
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8dcff 100%);
+}
+
+.upgrade-card.purchased {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border-color: #4caf50;
+    opacity: 0.85;
+}
+
+.upgrade-card.locked {
+    background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-color: #bdbdbd;
+}
+
+.upgrade-title {
+    font-weight: 700;
+    color: #5a67d8;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.upgrade-description {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.upgrade-cost {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.upgrade-card.purchased .upgrade-cost {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+}
+
+.upgrade-benefit {
+    font-size: 0.85em;
+    color: #2c3e50;
+}
+
+.minigames-section {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    border-radius: 20px;
+    padding: 25px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    text-align: center;
+}
+
+.minigames-section h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.minigame-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.minigame-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cooking-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+}
+
+.cooking-btn:hover {
+    background: linear-gradient(135deg, #ee5a52 0%, #dc4545 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(238, 90, 82, 0.3);
+}
+
+.typing-btn {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    color: white;
+}
+
+.typing-btn:hover {
+    background: linear-gradient(135deg, #44a08d 0%, #3d8b7a 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+}
+
+.customer {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    animation: walkIn 0.5s ease-out;
+    transition: all 0.2s ease;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+}
+
+.customer:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+}
+
+@keyframes walkIn {
+    from {
+        left: -50px;
+        opacity: 0;
+    }
+    to {
+        left: var(--left);
+        opacity: 1;
+    }
+}
+
+@keyframes walkOut {
+    to {
+        right: -50px;
+        opacity: 0;
+    }
+}
+
+.customer.leaving {
+    animation: walkOut 0.5s ease-out forwards;
+}
+
+.floating-money {
+    position: absolute;
+    font-weight: bold;
+    color: #4caf50;
+    font-size: 18px;
+    pointer-events: none;
+    animation: floatUp 0.8s ease-out forwards;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+
+    .header {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .main-content {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .upgrades-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .minigame-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stats {
+        order: 2;
+        width: 100%;
+    }
+
+    .progress-container {
+        order: 1;
+        width: 100%;
     }
 }

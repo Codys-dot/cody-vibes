@@ -4,55 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Tycoon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Restaurant Tycoon</h1>
-            <div class="money-display">
-                <span class="label">Balance:</span>
-                <span class="money-value" id="money">$0</span>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="restaurant-section">
-                <h2>Your Restaurant</h2>
-                <div class="restaurant-display" id="restaurant">
-                    <div class="restaurant-visual">
-                        <div class="building"></div>
-                        <div class="sign" id="restaurantName">Dusty Diner</div>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 id="restaurantName">Restaurant Tycoon</h1>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Money:</span>
+                        <span class="stat-value" id="money">$100</span>
                     </div>
-                    <div class="restaurant-info">
-                        <p id="currentTier">Tier: 1 - Dusty Diner</p>
-                        <p id="progress">Progress: 0/20 Upgrades</p>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressBar"></div>
+                    <div class="stat">
+                        <span class="stat-label">Tier:</span>
+                        <span class="stat-value" id="currentTier">Tier 1 - Dusty Diner</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Progress:</span>
+                        <span class="stat-value" id="progress">Progress: 0/20 Upgrades</span>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Minigames Section -->
+            <div class="minigames-section">
+                <h2>Minigames</h2>
+                <div class="minigame-buttons">
+                    <button id="cookingButton" class="minigame-btn cooking-btn" onclick="startCookingMinigame()">
+                        🍳 Cooking Challenge
+                    </button>
+                    <button id="typingButton" class="minigame-btn typing-btn" onclick="startTypingMinigame()">
+                        ⌨️ Speed Typing
+                    </button>
+                </div>
+            </div>
+
+            <!-- Restaurant Area -->
+            <div class="restaurant-section">
+                <div class="restaurant-container">
+                    <div class="restaurant" id="restaurant">
+                        <div class="building">
+                            <div class="roof"></div>
+                            <div class="walls">
+                                <div class="door"></div>
+                                <div class="windows">
+                                    <div class="window"></div>
+                                    <div class="window"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="customer-area" id="customerArea"></div>
+                </div>
+                <div class="restaurant-stats">
+                    <div class="stat">
+                        <span class="stat-label">Customers in restaurant:</span>
+                        <span class="stat-value" id="customerCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Money per customer:</span>
+                        <span class="stat-value" id="moneyPerCustomer">$25</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Customer rate:</span>
+                        <span class="stat-value" id="customerRate">1 per 3.0s</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="business-section">
-                <h2>Business Operations</h2>
-                <button id="cookingButton" class="cooking-button" onclick="startCookingMinigame()">🍳 Start Cooking</button>
-                <button id="typingButton" class="typing-button" onclick="startTypingMinigame()">⌨️ Speed Typing</button>
-                <div class="customer-area" id="customerArea">
-                    <p class="customer-count" id="customerCount">Customers: 0</p>
-                </div>
-                <div class="stats">
-                    <p>Money per Customer: <span id="moneyPerCustomer">$50</span></p>
-                    <p>Customer Visit Rate: <span id="customerRate">1 per 3s</span></p>
-                </div>
-            </div>
-
+            <!-- Upgrades Section -->
             <div class="upgrades-section">
-                <h2>Available Upgrades</h2>
+                <h2>Upgrades</h2>
                 <div class="upgrades-list" id="upgradesList"></div>
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- Cooking Minigame Modal -->
@@ -84,31 +118,9 @@
             </div>
             <div class="minigame-stats">
                 <p>Words: <span id="typingScore">0</span></p>
-                <p>Time: <span id="typingTime">60</span>s</p>
+                <p>Time: <span id="typingTime">30</span>s</p>
             </div>
             <button class="close-minigame" onclick="closeTypingMinigame()" id="closeTypingBtn" style="display: none;">Continue</button>
-        </div>
-    </div>
-
-    <!-- Secret Button -->
-    <button id="secretButton" class="secret-button" onclick="openSecretCode()" title="???">?</button>
-
-    <!-- Secret Code Modal -->
-    <div class="minigame-modal" id="secretModal" style="display: none;">
-        <div class="minigame-content secret-modal-content">
-            <div class="minigame-header">
-                <h2>🔐 Secret Code</h2>
-                <p>Enter the secret code to unlock a special reward!</p>
-            </div>
-            <div class="secret-input-container">
-                <input type="password" id="secretCodeInput" placeholder="Enter code..." maxlength="10" autocomplete="off">
-                <div class="secret-buttons">
-                    <button class="secret-submit-btn" onclick="submitSecretCode()">Submit</button>
-                    <button class="secret-cancel-btn" onclick="closeSecretModal()">Cancel</button>
-                </div>
-            </div>
-            <div id="secretMessage" class="secret-message"></div>
-            <button id="continueBtn" class="continue-btn" onclick="closeSecretModal()" style="display: none;">Keep Playing 🎮</button>
         </div>
     </div>
 
